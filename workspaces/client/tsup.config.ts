@@ -30,10 +30,6 @@ export default defineConfig(async (): Promise<Options[]> => {
         PATH_LIST: IMAGE_PATH_LIST.join(',') || '',
       },
       esbuildOptions(options) {
-        options.define = {
-          ...options.define,
-          global: 'globalThis',
-        };
         options.publicPath = '/';
       },
       esbuildPlugins: [
@@ -44,7 +40,6 @@ export default defineConfig(async (): Promise<Options[]> => {
           polyfills: {
             events: true,
             fs: true,
-            path: true,
           },
         }),
       ],
@@ -54,14 +49,15 @@ export default defineConfig(async (): Promise<Options[]> => {
         '.wasm': 'binary',
       },
       metafile: true,
-      minify: false,
+      minify: true,
       outDir: OUTPUT_DIR,
       platform: 'browser',
-      shims: true,
-      sourcemap: 'inline',
-      splitting: false,
-      target: ['chrome58', 'firefox57', 'safari11', 'edge18'],
-      treeshake: false,
+      shims: false,
+      sourcemap: true,
+      splitting: true,
+      // Latest Chrome version as of March 24, 2024
+      target: ['chrome123'],
+      treeshake: true,
     },
   ];
 });
