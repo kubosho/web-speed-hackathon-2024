@@ -2,8 +2,6 @@ import { useRef } from 'react';
 import { useAsync } from 'react-use';
 import styled from 'styled-components';
 
-import { decrypt } from '@wsh-2024/image-encrypt/src/decrypt';
-
 import { getImageUrl } from '../../../lib/image/getImageUrl';
 
 const _Canvas = styled.canvas`
@@ -33,6 +31,7 @@ export const ComicViewerPage = ({ pageImageId }: Props) => {
     canvas.height = image.naturalHeight;
     const ctx = canvas.getContext('2d')!;
 
+    const { decrypt } = await import('@wsh-2024/image-encrypt/src/decrypt');
     decrypt({
       exportCanvasContext: ctx,
       sourceImage: image,
