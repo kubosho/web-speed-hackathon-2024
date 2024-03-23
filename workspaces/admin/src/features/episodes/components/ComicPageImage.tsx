@@ -2,8 +2,6 @@ import { Image as ChakraImage } from '@chakra-ui/react';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useState } from 'react';
 
-import { decrypt } from '@wsh-2024/image-encrypt/src/decrypt';
-
 import { getImageUrl } from '../../../lib/image/getImageUrl';
 
 type Props = {
@@ -25,6 +23,7 @@ export const ComicPageImage: React.FC<Props> = ({ pageImageId }) => {
       canvas.height = image.naturalHeight;
       const ctx = canvas.getContext('2d')!;
 
+      const { decrypt } = await import('@wsh-2024/image-encrypt/src/decrypt');
       decrypt({
         exportCanvasContext: ctx,
         sourceImage: image,

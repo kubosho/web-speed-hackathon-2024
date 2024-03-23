@@ -23,7 +23,6 @@ import { useFormik } from 'formik';
 import { useEffect, useRef, useState } from 'react';
 import * as yup from 'yup';
 
-import { encrypt } from '@wsh-2024/image-encrypt/src/encrypt';
 import type { GetBookResponse } from '@wsh-2024/schema/src/api/books/GetBookResponse';
 import type { GetEpisodeResponse } from '@wsh-2024/schema/src/api/episodes/GetEpisodeResponse';
 
@@ -150,6 +149,7 @@ export const EpisodeDetailEditor: React.FC<Props> = ({ book, episode }) => {
       canvas.height = image.naturalHeight;
       const ctx = canvas.getContext('2d')!;
 
+      const { encrypt } = await import('@wsh-2024/image-encrypt/src/encrypt');
       encrypt({
         exportCanvasContext: ctx,
         sourceImage: image,
