@@ -193,9 +193,6 @@ importers:
 
   workspaces/client:
     dependencies:
-      '@webcomponents/webcomponentsjs':
-        specifier: 2.8.0
-        version: 2.8.0
       '@wsh-2024/admin':
         specifier: workspace:*
         version: link:../admin
@@ -4230,10 +4227,6 @@ packages:
       loupe: 2.3.7
       pretty-format: 29.7.0
     dev: true
-
-  /@webcomponents/webcomponentsjs@2.8.0:
-    resolution: {integrity: sha512-loGD63sacRzOzSJgQnB9ZAhaQGkN7wl2Zuw7tsphI5Isa0irijrRo6EnJii/GgjGefIFO8AIO7UivzRhFaEk9w==}
-    dev: false
 
   /@webgpu/types@0.1.21:
     resolution: {integrity: sha512-pUrWq3V5PiSGFLeLxoGqReTZmiiXwY3jRkIG5sLLKjyqNxrwm/04b4nw7LSmGWJcKk59XOM/YRTUwOzo4MMlow==}
