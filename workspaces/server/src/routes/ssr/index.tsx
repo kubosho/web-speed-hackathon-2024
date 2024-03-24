@@ -12,12 +12,24 @@ import { INDEX_HTML_PATH } from '../../constants/paths';
 
 const app = new Hono();
 
-async function createHTML({ body, styleTags }: { body: string; styleTags: string }): Promise<string> {
+async function createHTML({
+  body,
+  isHome,
+  styleTags,
+}: {
+  body: string;
+  isHome: boolean;
+  styleTags: string;
+}): Promise<string> {
   const htmlContent = await fs.readFile(INDEX_HTML_PATH, 'utf-8');
 
   const content = htmlContent
-    .replaceAll('<div id="root"></div>', `<div id="root">${body}</div>`)
-    .replaceAll('<style id="tag"></style>', styleTags);
+    .replace('<div id="root"></div>', `<div id="root">${body}</div>`)
+    .replace('<style id="tag"></style>', styleTags)
+    .replace(
+      '<link id="hero-image-preload" />',
+      isHome ? '<link as="image" href="/assets/hero-image.webp" rel="preload" />' : '',
+    );
 
   return content;
 }
@@ -35,7 +47,7 @@ app.get('*', async (c) => {
     );
 
     const styleTags = sheet.getStyleTags();
-    const html = await createHTML({ body, styleTags });
+    const html = await createHTML({ body, isHome: c.req.path === '/', styleTags });
 
     return c.html(html);
   } catch (cause) {
