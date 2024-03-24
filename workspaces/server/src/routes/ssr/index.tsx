@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 
 import { Hono } from 'hono';
 import { HTTPException } from 'hono/http-exception';
-import ReactDOMServer from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 
@@ -38,7 +38,7 @@ app.get('*', async (c) => {
   const sheet = new ServerStyleSheet();
 
   try {
-    const body = ReactDOMServer.renderToString(
+    const body = renderToString(
       sheet.collectStyles(
         <StaticRouter location={c.req.path}>
           <ClientApp />
