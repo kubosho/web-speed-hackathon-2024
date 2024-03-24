@@ -1,12 +1,12 @@
 import { Suspense, useMemo } from 'react';
 
 import type { GetBookListResponse } from '@wsh-2024/schema/src/api/books/GetBookListResponse';
+import { isContains } from '@wsh-2024/shared/src/isContains';
 
 import { BookListItem } from '../../../features/book/components/BookListItem';
 import { Flex } from '../../../foundation/components/Flex';
 import { Text } from '../../../foundation/components/Text';
 import { Color, Typography } from '../../../foundation/styles/variables';
-import { isContains } from '../../../lib/filter/isContains';
 
 type Props = {
   books: GetBookListResponse;

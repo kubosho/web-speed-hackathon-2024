@@ -11,6 +11,7 @@
     "@uidotdev/usehooks": "2.4.1",
     "@wsh-2024/image-encrypt": "workspace:*",
     "@wsh-2024/schema": "workspace:*",
+    "@wsh-2024/shared": "workspace:*",
     "file-type": "19.0.0",
     "formik": "2.4.5",
     "framer-motion": "10.16.5",
@@ -19,7 +20,6 @@
     "react-dom": "18.2.0",
     "regexparam": "3.0.0",
     "underscore": "1.13.6",
-    "unicode-collation-algorithm2": "0.5.0",
     "yup": "1.4.0",
     "zustand": "4.5.2"
   },
