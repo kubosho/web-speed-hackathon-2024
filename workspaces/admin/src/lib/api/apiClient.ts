@@ -2,9 +2,9 @@ import ky from 'ky';
 
 const createKyInstance = () => {
   const instance = ky.create({
-    credentials: 'include',
+    credentials: 'same-origin',
     prefixUrl: process.env['API_URL'] || '/',
-    timeout: false,
+    timeout: 10000,
   });
 
   return instance;
