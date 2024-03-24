@@ -43,7 +43,6 @@ async function createInjectDataStr(): Promise<Record<string, unknown>> {
 
 async function createHTML({
   body,
-  injectData,
   styleTags,
 }: {
   body: string;
@@ -54,17 +53,7 @@ async function createHTML({
 
   const content = htmlContent
     .replaceAll('<div id="root"></div>', `<div id="root">${body}</div>`)
-    .replaceAll('<style id="tag"></style>', styleTags)
-    .replaceAll(
-      '<script id="inject-data" type="application/json"></script>',
-      `<script id="inject-data" type="application/json">
-        ${jsesc(injectData, {
-          isScriptContext: true,
-          json: true,
-          minimal: true,
-        })}
-      </script>`,
-    );
+    .replaceAll('<style id="tag"></style>', styleTags);
 
   return content;
 }
