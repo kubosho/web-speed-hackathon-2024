@@ -338,9 +338,6 @@ importers:
       log4js:
         specifier: 6.9.1
         version: 6.9.1
-      moment-timezone:
-        specifier: 0.5.45
-        version: 0.5.45
       neverthrow:
         specifier: 6.1.0
         version: 6.1.0
