@@ -19,7 +19,6 @@ import {
 } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useId, useMemo, useState } from 'react';
-import _ from 'underscore';
 import { create } from 'zustand';
 
 import { isContains } from '@wsh-2024/shared/src/isContains';
