@@ -217,7 +217,7 @@ export const BookListPage: React.FC = () => {
                 </Tr>
               </Thead>
               <Tbody>
-                {_.map(filteredBookList, (book) => (
+                {filteredBookList.map((book) => (
                   <Tr key={book.id}>
                     <Td textAlign="center" verticalAlign="middle">
                       <Button colorScheme="teal" onClick={() => modalState.openDetail(book.id)} variant="solid">

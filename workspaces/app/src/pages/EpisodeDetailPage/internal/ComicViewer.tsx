@@ -1,7 +1,8 @@
-import _ from 'lodash';
 import { useEffect, useState } from 'react';
 import { useUpdate } from 'react-use';
 import styled from 'styled-components';
+
+import { clamp } from '@wsh-2024/shared/src/clamp';
 
 import { ComicViewerCore } from '../../../features/viewer/components/ComicViewerCore';
 import { addUnitIfNeeded } from '../../../lib/css/addUnitIfNeeded';
@@ -12,7 +13,7 @@ const IMAGE_HEIGHT = 1518;
 const MIN_VIEWER_HEIGHT = 500;
 const MAX_VIEWER_HEIGHT = 650;
 
-const MIN_PAGE_WIDTH = _.floor((MIN_VIEWER_HEIGHT / IMAGE_HEIGHT) * IMAGE_WIDTH);
+const MIN_PAGE_WIDTH = Math.floor((MIN_VIEWER_HEIGHT / IMAGE_HEIGHT) * IMAGE_WIDTH);
 
 const _Container = styled.div`
   position: relative;
@@ -47,7 +48,7 @@ export const ComicViewer: React.FC<Props> = ({ episodeId }) => {
   // 1ページの高さの候補
   const candidatePageHeight = (candidatePageWidth / IMAGE_WIDTH) * IMAGE_HEIGHT;
   // ビュアーの高さ
-  const viewerHeight = _.clamp(candidatePageHeight, MIN_VIEWER_HEIGHT, MAX_VIEWER_HEIGHT);
+  const viewerHeight = clamp(candidatePageHeight, MIN_VIEWER_HEIGHT, MAX_VIEWER_HEIGHT);
 
   useEffect(() => {
     window.addEventListener('resize', rerender);
