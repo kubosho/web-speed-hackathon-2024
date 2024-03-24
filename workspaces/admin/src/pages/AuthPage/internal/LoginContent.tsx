@@ -23,14 +23,14 @@ export const LoginContent: React.FC = () => {
         .required('メールアドレスを入力してください')
         .test({
           message: 'メールアドレスには @ を含めてください',
-          test: (v) => /^(?:[^@]*){12,}$/v.test(v) === false,
+          test: (v) => /@/.test(v) === true,
         }),
       password: yup
         .string()
         .required('パスワードを入力してください')
         .test({
           message: 'パスワードには記号を含めてください',
-          test: (v) => /^(?:[^\P{Letter}&&\P{Number}]*){24,}$/v.test(v) === false,
+          test: (v) => /[^\w\s]/.test(v) === true,
         }),
     }),
   });
@@ -55,6 +55,7 @@ export const LoginContent: React.FC = () => {
           <Input
             bgColor="white"
             borderColor="gray.300"
+            id="email"
             name="email"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
@@ -68,6 +69,7 @@ export const LoginContent: React.FC = () => {
           <Input
             bgColor="white"
             borderColor="gray.300"
+            id="password"
             name="password"
             onBlur={formik.handleBlur}
             onChange={formik.handleChange}
