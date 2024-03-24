@@ -6,5 +6,5 @@ const _Image = styled.img`
 `;
 
 export const HeroImage: React.FC = () => (
-  <_Image alt="Cyber TOON" height="576" src="/assets/hero-image.png" width="1024" />
+  <_Image alt="Cyber TOON" height="576" src="/assets/hero-image.webp" width="1024" />
 );
