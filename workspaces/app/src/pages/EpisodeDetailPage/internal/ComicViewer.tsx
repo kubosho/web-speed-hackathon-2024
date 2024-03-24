@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import { useState } from 'react';
-import { useInterval, useUpdate } from 'react-use';
+import { useEffect, useState } from 'react';
+import { useUpdate } from 'react-use';
 import styled from 'styled-components';
 
 import { ComicViewerCore } from '../../../features/viewer/components/ComicViewerCore';
@@ -33,9 +33,7 @@ type Props = {
 };
 
 export const ComicViewer: React.FC<Props> = ({ episodeId }) => {
-  // 画面のリサイズに合わせて再描画する
   const rerender = useUpdate();
-  useInterval(rerender, 0);
 
   const [el, ref] = useState<HTMLDivElement | null>(null);
 
@@ -50,6 +48,14 @@ export const ComicViewer: React.FC<Props> = ({ episodeId }) => {
   const candidatePageHeight = (candidatePageWidth / IMAGE_WIDTH) * IMAGE_HEIGHT;
   // ビュアーの高さ
   const viewerHeight = _.clamp(candidatePageHeight, MIN_VIEWER_HEIGHT, MAX_VIEWER_HEIGHT);
+
+  useEffect(() => {
+    window.addEventListener('resize', rerender);
+
+    return () => {
+      window.removeEventListener('resize', rerender);
+    };
+  }, [rerender]);
 
   return (
     <_Container ref={ref}>
